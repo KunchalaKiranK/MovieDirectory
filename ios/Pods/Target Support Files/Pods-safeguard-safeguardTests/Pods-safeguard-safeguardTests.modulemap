@@ -1,0 +1,6 @@
+module Pods_safeguard_safeguardTests {
+  umbrella header "Pods-safeguard-safeguardTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

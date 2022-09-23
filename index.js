@@ -1,29 +1,22 @@
-/**
- * @format
- */
+import React from 'react';
+import {AppRegistry, Text} from 'react-native';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import 'react-native-get-random-values';
+import 'react-native-gesture-handler';
 
-import { AppRegistry } from "react-native";
-import { name as appName } from "./app.json";
+import App from './App';
+import {name as appName} from './app.json';
+import {persistor, store} from './src/_app';
 
-import { Database } from "@nozbe/watermelondb";
-import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
-import { mySchema } from "./src/models/schema";
-import { dbModels } from "./src/models/index.js";
+AppRegistry.registerComponent(appName, () => Apps);
 
-import { createNavigation } from "./src/screens/Navigation";
-
-// First, create the adapter to the underlying database:
-const adapter = new SQLiteAdapter({
-  dbName: "WatermelonDemo",
-  schema: mySchema
-});
-
-// Then, make a Watermelon database from it!
-const database = new Database({
-  adapter,
-  modelClasses: dbModels
-});
-
-const Navigation = createNavigation({ database });
-
-AppRegistry.registerComponent(appName, () => Navigation);
+const Apps = () => {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={<Text>Loading....</Text>} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  );
+};
