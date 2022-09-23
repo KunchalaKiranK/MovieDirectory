@@ -3,7 +3,7 @@ import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-
+import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
 import {OrderDetails, OrderInstruction, OrderNotes} from '../component';
 import {useAppDispatch, useAppSelector} from '../_app';
 import {OrderListProp} from '../_feature/orderLists';
